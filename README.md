@@ -85,19 +85,23 @@ In the second chapter of *Data Feminism*, Klein and D'Ignazio describe 4 ways th
 
 ### Critical Analysis & Reflection: Before You Code (questions above)
 
-* **(R1a)** ... (about 25-50 words)
-* **(R1b)** ... (about 25-50 words)
-* **(R1c)** ... (about 25-50 words)
-* **(R1d)** ... (about 25-50 words)
-* **(R1e)** ... (about 25-50 words)
-* **(R1f)** ... (about 25-50 words)
-* **(R1g)** ... (bullet points fine; about 50 words)
-* **(R1h)** ... (bullet points fine; about 50 words)
+* **(R1a)** The creators started collecting the CountLove data in hopes of keeping factual records of ongoing protests to make data more accessible so it can help citizens, journalists, and politicians, and also historially document protests related to civil rights, immigrations, racial injustice and many other importnat issues.
+* **(R1b)** The main point of this article was to show how the BLM movement was reached in every state and corner of the United States and the importance that it showed in every area and the people of our country.
+* **(R1c)** Tommy Leung and Nathan Perkins collect and share the CountLove data and are enginners and scientists that have a focus in public policy and civic responsibility.
+* **(R1d)** The type of demonstrations CountLove includes are public displays of protest that aren't part of "regular business", and they exclude awareness events, commemorative celebrations, historic reenactments, fundrasising events, townhalls, or political campaign rallies.
+* **(R1e)** CountLove gets their data about protests through newspapers and television sites, and that data is extracted through their software that automates the most time-consuming error-prone parts of the workflow.
+* **(R1f)** CountLove uses a conservative count approach, meaning that they interpet "a dozen" as 10, "dozens" as 20, "hundreds" as 100, and so on. A potential problem with this method is that the count can be off or provide a misconception about the amount, because "hundreds" can mean a wide range of counts.
+* **(R1g)**  
+   * Accessibility: Searching through individual records can get tedious and getting this information in a quick and organized way is important to CountLove.
+   * Compassion: Keeping these records and making them accessible can help citizens, journalists, and politicians to share ideas of empathy and kindness. Using this data for the betterment of the country is important to CountLove.
+* **(R1h)** 
+   * Direct stakeholder: Journalists who use this data in their writing to show evidence of something or a visualization.
+   * Indirect stakeholder: A citizen can be an indirect stakeholder of CountLove as they could benefit from the availability of data and awareness it can bring.
 
 ### Part 3: Locations (`analysis.R`)
-* **(R3a)** ... (about 25-50 words)
-* **(R3b)** ... (about 25-50 words)
-* **(R3c)** ... (about 25-50 words)
+* **(R3a)** The number of protests in Washington State does not surprise me. I think that Washington State has many people who are activists and passionate on social topics and issues which is why the number of protests is what it is.
+* **(R3b)** I think sapply() is amazing because it's able to display a function in a very clean and readable way, and it is very easy to implement into datasets.
+* **(R3c)** I noticed that casing was an issue in my data quality. For example, there's two different places for Washington state, one being "WA" and the other "wA". I would change this by taking casing into account when creating the uniq_states vector.
 
 ### Critical Analysis & Reflection: After You Code (questions above)
 * **(R7h)** ... (100 words or more)
