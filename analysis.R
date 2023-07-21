@@ -463,13 +463,6 @@ View(high_level_table)
 # (2) Write code to test the functions and show that they work
 # (3) Document your code.
 
-filter_positions <- function(purpose, position_taken) {
-  if (position_taken = NULL) {
-    
-  }
-}
-
-
 #                                         Note 17.
 ## Reporting ---- 
 # This function produces a markdown report that summarizes a subset 
@@ -530,7 +523,7 @@ format_doc <- function(protest_df, purpose, position_taken=NULL) {
 
 # A helper function to write the report to a file
 # NOTE: Check and update the filename for your machine
-write_report <- function(md_doc, fname="~/Documents/info201/reports/report.md") {
+write_report <- function(md_doc, fname="INFO201/report.md") {
   output_fn <- file(fname, "w")
   writeLines(md_doc, output_fn)
   close(output_fn)
@@ -539,8 +532,32 @@ write_report <- function(md_doc, fname="~/Documents/info201/reports/report.md") 
 # 6a: Write the filter_positions() function, as described above. Please comment 
 #    your function. (Variable: `filter_protests`)
 
+# This function filters the positions taken and returns a
+# dataframe of purpose to position taken. If position taken
+# is invalid, the function returns all protests that match
+# the purpose.
+# Parameters:
+#   purpose: purpose of the protests
+#   position_taken: specific position of the protest
+filter_positions <- function(purpose, position_taken) {
+  if (is.null(position_taken)) {
+    return(subset(protests, str_detect(Event..legacy..see.tags., pattern = purpose)))
+  }
+  return(data.frame(subset(protests, Event..legacy..see.tags. == paste0(purpose, " (", position_taken, ")"))))
+}
+
 # 6b: Write the filter_and_report() function, as described above. Please comment 
 #    your function. (Variable: `filter_and_report`)
+
+# This function filters the data into a dataframe and formats
+# the data into a markdown document.
+# Parameters:
+#   purpose: purpose of the protests
+#   position_taken: specific position of the protest
+filter_and_report <- function(purpose, position_taken) {
+  sub_set_protests = data.frame(filter_positions(purpose, position_taken))
+  format_doc(sub_set_protests, purpose, position_taken)
+}
 
 #                                         Note 18.
 # 6c: Demonstrate that your two functions, filter_protests() and 
@@ -548,3 +565,14 @@ write_report <- function(md_doc, fname="~/Documents/info201/reports/report.md") 
 #    For example, do your functions have limitations? Or, do they 
 #    work perfectly? If so, how do you know> Do think these two 
 #    functions are useful? What might you do next if you had more time?
+filtered_position_null <- filter_positions("Racial Injustice", NULL)
+filtered_data <- filter_positions("Racial Injustice", "Violence")
+filter_and_report("Racial Injustice", "Violence")
+
+# The filter_positions function works well, I can tell by comparing some
+# of the specific positions taken with the protests dataframe. If I had more
+# time, for the NULL case in filter_positions, I would sort the rows, I think
+# that is a limitation that can be fixed as it would be more readable.
+# A limitation to filter_and_report is that it relies on a certain file path,
+# if I had more time I'd make it easier for the user to have that report
+# created.
