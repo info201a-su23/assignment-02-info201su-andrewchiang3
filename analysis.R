@@ -4,8 +4,8 @@
 #    INFO-201 (Autumn 2022)
 #    dhendry@uw.edu
 
-# Practice set info ---- 
-practice.begin("A2", learner="Andrew Chiang", email="achian2@uw.edu")
+# Practice set info ----
+practice.begin("A2", learner= "Andrew Chiang", email= "achian2@uw.edu")
 
 # Your 44 prompts ----
 
@@ -20,8 +20,8 @@ practice.begin("A2", learner="Andrew Chiang", email="achian2@uw.edu")
 # Before proceeding, you should explore countlove.org and
 # consider these questions:
 #
-#    1. Goals. What are the goals of Count Love? Who is working on this 
-#           project? What does Count Love want to achieve? 
+#    1. Goals. What are the goals of Count Love? Who is working on this
+#           project? What does Count Love want to achieve?
 #    2. Human values. What values seem to be informing the design of
 #           Count Love? Where do these values come from?
 #    3. Data sources. Where does the data come from? Is the data credible?
@@ -83,17 +83,17 @@ practice.begin("A2", learner="Andrew Chiang", email="achian2@uw.edu")
 ## 3.0 Assignment Prompts ----
 # This assignment comprises two kinds of prompts:
 #
-#    Coding prompts:      Write the necessary code to compute the answer. 
+#    Coding prompts:      Write the necessary code to compute the answer.
 #                         For grading, it is important that you store your
-#                         answers in the variable names listed with each 
+#                         answers in the variable names listed with each
 #                         question in `backtics`. Please make sure to store
-#                         the appropriate variable type (e.g., 
+#                         the appropriate variable type (e.g.,
 #                         a string, a vector, a dataframe, etc.).
 #
 #    Reflection prompts:  For each prompt marked `REFLECTION`, please write
 #                         a response in your `README.md` file.
 #
-# *Note 1:* Grading guidelines are here: 
+# *Note 1:* Grading guidelines are here:
 #    https://canvas.uw.edu/courses/1616427/pages/info-grading-guidelines-and-rubrics
 #
 ## 4.0 Examples ----
@@ -126,6 +126,7 @@ practice.begin("A2", learner="Andrew Chiang", email="achian2@uw.edu")
 #                                         Note 03.
 # 1a: Load the `stringr` package, which you will use later.
 library(stringr)
+library(lintr)
 
 # 1b: Load the data from https://countlove.org/data/data.csv (Variable: `protests`)
 protests <- read.csv("https://countlove.org/data/data.csv")
@@ -231,7 +232,8 @@ prop_in_wa <- num_in_wa / length(locations)
 count_in_location <- function(location) {
   location_count = sum(str_detect(locations, pattern = location), na.rm = TRUE)
   if (location_count > 0) {
-    return(paste0("There were ", location_count, " protests in ", location, "."))
+    return(paste0("There were ", location_count, " protests in ",
+                  location, "."))
   }
   return(paste("Location", location, "not found."))
 }
@@ -322,7 +324,8 @@ ratio_2020_2019 <- length(in_2020) / length(in_2019)
 #           N is the number of protests on that date; and
 #           DATE is the date provided. (Variable: `count_on_date`)
 count_on_date <- function(date) {
-  return(paste0("There were ", sum(str_detect(dates, date)), " protests on ", date, "."))
+  return(paste0("There were ", sum(str_detect(dates, date)),
+                " protests on ", date, "."))
 }
 
 # 4i: Using your function you just wrote, how many protests were there on
@@ -510,7 +513,8 @@ format_doc <- function(protest_df, purpose, position_taken=NULL) {
   
   # List of protests component (Note: Bullet_list is a vector)
   bullet_list <- paste0("* ", protest_df$Date, ": ", protest_df$Location,
-                        " [Article](", protest_df$Source, ")", " (_", protest_df$Attendees, "_)\n")
+                        " [Article](", protest_df$Source, ")",
+                        " (_", protest_df$Attendees, "_)\n")
   
   # Collapse the vector into a string
   url_str <- paste0(bullet_list, collapse="")
@@ -541,9 +545,12 @@ write_report <- function(md_doc, fname="INFO201/report.md") {
 #   position_taken: specific position of the protest
 filter_positions <- function(purpose, position_taken) {
   if (is.null(position_taken)) {
-    return(subset(protests, str_detect(Event..legacy..see.tags., pattern = purpose)))
+    return(subset(protests,
+                  str_detect(Event..legacy..see.tags., pattern = purpose)))
   }
-  return(data.frame(subset(protests, Event..legacy..see.tags. == paste0(purpose, " (", position_taken, ")"))))
+  return(data.frame(subset(protests, 
+         Event..legacy..see.tags. == 
+         paste0(purpose, " (", position_taken, ")"))))
 }
 
 # 6b: Write the filter_and_report() function, as described above. Please comment 
